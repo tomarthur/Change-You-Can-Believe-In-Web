@@ -1,0 +1,33 @@
+---
+- id: 1
+  created_at: !ruby/object:DateTime 2012-12-11 01:19:16.099436000 -05:00
+  created_on: 2012-12-11
+  tagid: 194928
+- id: 2
+  created_at: !ruby/object:DateTime 2012-12-11 01:19:52.547976000 -05:00
+  created_on: 2012-12-11
+  tagid: 194928
+- id: 3
+  created_at: !ruby/object:DateTime 2012-12-11 01:20:02.006440000 -05:00
+  created_on: 2012-12-11
+  tagid: 194928
+- id: 4
+  created_at: !ruby/object:DateTime 2012-12-11 01:20:22.835567000 -05:00
+  created_on: 2012-12-11
+  tagid: 194928
+- id: 5
+  created_at: !ruby/object:DateTime 2012-12-11 01:22:28.970289000 -05:00
+  created_on: 2012-12-11
+  tagid: 194928
+- id: 6
+  created_at: !ruby/object:DateTime 2012-12-11 01:26:10.091894000 -05:00
+  created_on: 2012-12-11
+  tagid: 194928
+- id: 7
+  created_at: !ruby/object:DateTime 2012-12-11 01:55:41.953680000 -05:00
+  created_on: 2012-12-11
+  tagid: 194928
+- id: 8
+  created_at: !ruby/object:DateTime 2012-12-11 01:55:54.860473000 -05:00
+  created_on: 2012-12-11
+  tagid: 194928
