@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'dm-core'
 require 'dm-timestamps'
+require 'money'
 
 DataMapper::setup(:default, {:adapter => 'yaml', :path => 'db'}) 
 #talk to database yaml (type, could be mysql, to the db folder
@@ -10,13 +11,13 @@ class Money
 
   property :id,   Serial		  # each record is equal to one coin collection event
   property :created_at, DateTime
-  property :created_on, Date
-  property :lasttotal, Float
-  property :penny, Integer 		  # number of pennys
-  property :nickel, Integer 	  # number of nickels
-  property :dime, Integer		  # number of dimes	
-  property :quarter, Integer 	  # number of quarters
-  property :total, Float	 	  # new total
+  property :created_on, Date 
+  property :lasttotal, Float, :default => 0.00
+  property :penny, Integer, :default => 0  		  # number of pennys
+  property :nickel, Integer, :default => 0 	  # number of nickels
+  property :dime, Integer, :default => 0 	  # number of dimes	
+  property :quarter, Integer, :default => 0 	  # number of quarters
+  property :total, Float, :default => 0.00 	  # new total
 
 end
 
@@ -60,6 +61,45 @@ get '/about' do
 end
 
 get '/savings' do
+  @lasttotal = Money.last
+ 
+  @totalpenny = 0
+  @totalnickel = 0
+  @totaldime = 0
+  @totalquarter = 0
+
+  @savings = Money.all
+
+  for thissavings in @savings
+  	@totalpenny = @totalpenny + thissavings.penny
+  	@totalnickel = @totalnickel + thissavings.nickel
+  	@totaldime = @totaldime + thissavings.dime
+  	@totalquarter = @totalquarter + thissavings.quarter
+  end
+  
+#   @totalpenny.to_f
+#     @totalpenny.to_f
+  
+  @pennymoney =  @totalpenny * 0.01
+  @nickelmoney = @totalnickel * 0.05
+  @dimemoney = @totaldime * 0.10
+  @quartermoney = @totalquarter * 0.25
+  
+  @pennymoney.round(3)
+  @nickelmoney.round(3)
+  @dimemoney.round(3)
+  @quartermoney.round(4)
+  
+#  
+#  	  <% for thisresponse in @Response %>
+# 	  <%= thisresponse.id %>, 
+# 	  <%= thisresponse.collect %>,
+# 	  <%= thisresponse.change %>,
+# 	  <%= thisresponse.giving %>,
+# 	  <%= thisresponse.importance %>,
+# 	  <%= thisresponse.usefulness %>
+# 	  <br></br>
+# 	  <% end %>d
 
   erb :savings
 end
