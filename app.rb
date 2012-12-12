@@ -81,7 +81,7 @@ end
 post '/maketag' do #for adding new RFID tags to the database
 
 	@t = Tag.new
-	@t.tagid = params[:tagid]
+	@t.tagid = params[:tagid].to_s
 	@t.name = params[:name]
 	@t.price = params[:price]
 	@t.giving = params[:purpose]
@@ -128,7 +128,7 @@ get '/tagscan' do			# tag scan data sent from arduino
 
 
   @s = TagScan.new
-  @s.tagid = params[:tagid]
+  @s.tagid = params[:tagid].to_s
   @s.save
 
   "Tag Captured"

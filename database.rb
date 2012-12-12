@@ -24,7 +24,7 @@ class Tag
     property :updated_at, DateTime
     property :updated_on, Date
     property :numscans, Integer,  :default => 0.00
-    property :tagid, Integer,  :default => 0.00		# tag ID used by Arduino
+    property :tagid, String,  :default => " "		# tag ID used by Arduino
     property :name, String,  :default => "none"	    # human readable name of item
     property :price, Float,  :default => 0.00		# price of item
     property :giving, Boolean,	:default => FALSE	# TRUE == item for charity, FALSE == item for self
@@ -38,7 +38,7 @@ class TagScan
     property :id, Serial
     property :created_at, DateTime
     property :created_on, Date
-    property :tagid, Integer
+    property :tagid, String
     
 end
 DataMapper.finalize
