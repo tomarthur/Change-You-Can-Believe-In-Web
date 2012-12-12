@@ -1,7 +1,53 @@
 
     <div class="container">
 
-      <h1>Bootstrap starter template</h1>
-      <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+      <p>You can add a new item to believe in.</p>
+      
+      <div class="container">
 
-    </div> <!-- /container -->
+      <form class="form-horizontal">
+        <h2 class="form-negtag-heading">New Tag</h2>
+        <div class="control-group">
+       	 <label class="control-label" for="inputEmail">Item Name</label>
+       	 	<div class="controls">
+	       	 <input class="span5" type="text"  name="name" placeholder="Mouse Ears">
+	       	</div>
+        </div>
+        
+        <div class="control-group">
+        <label>Tag Number <input class="span3" type="text" name="tagid" placeholder="3012393"></label>
+        </div>
+        
+        <label>Price <div class="input-prepend">
+	    <span class="add-on">$</span>
+        <input class="span2" id="prependedInput" type="text" placeholder="20.00">
+        </div></label>
+        
+        <label class="radio">
+		  <input type="radio" name="purpose" id="purpose1" value="forme" checked>
+		  Personal Item - Change for Me
+		</label>
+		<label class="radio">
+		  <input type="radio" name="purpose" id="purpose2" value="foreveryone">
+		  Social Good Item - Change for Everyone
+		</label>
+		
+		<label>Image URL <input type="url" class"span7" name="img" placeholder="image url"></label>
+	  <button class="btn btn-large btn-primary" type="submit">Add Tag</button>
+      </form>
+
+
+    </div> 
+    
+      property :id, Serial	
+  property :created_at, DateTime
+  property :created_on, Date
+  property :updated_at, DateTime
+  property :updated_on, Date
+  property :numscans, Integer
+  property :tagid, Integer		# tag ID used by Arduino
+  property :name, String	    # human readable name of item
+  property :price, Float		# price of item
+  property :giving, Boolean		# TRUE == item for charity, FALSE == item for self
+  property :img, String			# Image address
+ 

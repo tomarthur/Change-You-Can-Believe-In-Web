@@ -1,3 +1,4 @@
 sinatra
+sinatra-support
 dm-core
-dm-yaml-adapter
+dm-yawl-adapter

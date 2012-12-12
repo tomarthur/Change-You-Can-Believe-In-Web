@@ -1,7 +1,8 @@
-require 'sinatra'
+require 'sinatra/base'
 require 'dm-core'
 require 'dm-timestamps'
-require 'money'
+require 'sinatra/support/numeric'
+
 
 DataMapper::setup(:default, {:adapter => 'yaml', :path => 'db'}) 
 #talk to database yaml (type, could be mysql, to the db folder
@@ -50,6 +51,9 @@ end
   
 DataMapper.finalize
 
+
+class ChangeITP < Sinatra::Base
+register Sinatra::Numeric
 # Homepage
 get '/' do
   erb :home, :layout => false
@@ -61,45 +65,31 @@ get '/about' do
 end
 
 get '/savings' do
-  @lasttotal = Money.last
- 
+  @savings = Money.all
+
   @totalpenny = 0
   @totalnickel = 0
   @totaldime = 0
   @totalquarter = 0
-
-  @savings = Money.all
-
+  
   for thissavings in @savings
-  	@totalpenny = @totalpenny + thissavings.penny
-  	@totalnickel = @totalnickel + thissavings.nickel
-  	@totaldime = @totaldime + thissavings.dime
-  	@totalquarter = @totalquarter + thissavings.quarter
+  	@totalpenny += thissavings.penny
+  	@totalnickel += thissavings.nickel
+  	@totaldime += thissavings.dime
+  	@totalquarter += thissavings.quarter
   end
-  
-#   @totalpenny.to_f
-#     @totalpenny.to_f
-  
-  @pennymoney =  @totalpenny * 0.01
+
+  @pennymoney = @totalpenny * 0.01
   @nickelmoney = @totalnickel * 0.05
   @dimemoney = @totaldime * 0.10
   @quartermoney = @totalquarter * 0.25
   
-  @pennymoney.round(3)
-  @nickelmoney.round(3)
-  @dimemoney.round(3)
-  @quartermoney.round(4)
-  
-#  
-#  	  <% for thisresponse in @Response %>
-# 	  <%= thisresponse.id %>, 
-# 	  <%= thisresponse.collect %>,
-# 	  <%= thisresponse.change %>,
-# 	  <%= thisresponse.giving %>,
-# 	  <%= thisresponse.importance %>,
-# 	  <%= thisresponse.usefulness %>
-# 	  <br></br>
-# 	  <% end %>d
+  @lasttotal = Money.last
+
+  @lastpennymoney = @lasttotal.penny * 0.01
+  @lastnickelmoney = @lasttotal.nickel * 0.05
+  @lastdimemoney = @lasttotal.dime * 0.10
+  @lastquartermoney = @lasttotal.quarter * 0.25
 
   erb :savings
 end
@@ -159,7 +149,7 @@ get '/updatetotal' do 		# total sent from arduino after a new collection
   @m.nickel = params[:nickel]
   @m.dime = params[:dime]
   @m.quarter = params[:quarter]
-  @m.total = @totaltemp
+  @m.total = params[:total]
   @m.save
 # raise Exception, @m.save
    "Update Captured"
@@ -175,3 +165,4 @@ get '/tagscan' do			# tag scan data sent from arduino
   "Tag Captured"
 end
 
+end
