@@ -1,9 +1,9 @@
 require 'sinatra/base'
-require 'dm-core'
+require 'data_mapper'
 require 'dm-timestamps'
 require 'sinatra/support/numeric'
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+DataMapper::setup(:default, {:adapter => 'yaml', :path => 'db'})
 #talk to database yaml (type, could be mysql, to the db folder
 
 class Money
