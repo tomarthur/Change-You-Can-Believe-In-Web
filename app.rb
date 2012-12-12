@@ -1,55 +1,10 @@
-require 'sinatra/base'
-require 'data_mapper'
-require 'dm-timestamps'
+require 'rubygems'
+require 'bundler'
+Bundler.require
+require './database.rb'
 require 'sinatra/support/numeric'
 
-DataMapper::setup(:default, {:adapter => 'yaml', :path => 'http://itp.howtomworks.com/db-heroku/'})
-#talk to database yaml (type, could be mysql, to the db folder
-
-class Money
-  include DataMapper::Resource
-
-  property :id,   Serial		  # each record is equal to one coin collection event
-  property :created_at, DateTime
-  property :created_on, Date 
-  property :lasttotal, Float, :default => 0.00
-  property :penny, Integer, :default => 0  		  # number of pennys
-  property :nickel, Integer, :default => 0 	  # number of nickels
-  property :dime, Integer, :default => 0 	  # number of dimes	
-  property :quarter, Integer, :default => 0 	  # number of quarters
-  property :total, Float, :default => 0.00 	  # new total
-
-end
-
-class Tag
-  include DataMapper::Resource
-  
-  property :id, Serial	
-  property :created_at, DateTime
-  property :created_on, Date
-  property :updated_at, DateTime
-  property :updated_on, Date
-  property :numscans, Integer
-  property :tagid, Integer		# tag ID used by Arduino
-  property :name, String	    # human readable name of item
-  property :price, Float		# price of item
-  property :giving, Boolean		# TRUE == item for charity, FALSE == item for self
-  property :img, String			# Image address
- 
-end
-
-class TagScan
-  include DataMapper::Resource
-  
-  property :id, Serial
-  property :created_at, DateTime
-  property :created_on, Date
-  property :tagid, Integer
-  
-end
-  
-DataMapper.finalize
-
+set :root, File.dirname(__FILE__)
 
 class ChangeITP < Sinatra::Base
 register Sinatra::Numeric
@@ -96,12 +51,26 @@ end
 
 get '/trinkets' do
 
+	@tags = Tag.all
+	@total = Money.last.total
+	
+
   erb :trinkets
 end
 
 get '/lastcollection' do
 
-  erb :lastcollection
+  @lasttotal = Money.last
+
+
+  @lastpennymoney = @lasttotal.penny * 0.01
+  @lastnickelmoney = @lasttotal.nickel * 0.05
+  @lastdimemoney = @lasttotal.dime * 0.10
+  @lastquartermoney = @lasttotal.quarter * 0.25
+
+  @savings = Money.all
+
+  erb :coinscounted
 end
 
 get '/newtag' do
@@ -115,7 +84,7 @@ post '/maketag' do #for adding new RFID tags to the database
 	@t.tagid = params[:tagid]
 	@t.name = params[:name]
 	@t.price = params[:price]
-	@t.giving = params[:giving]
+	@t.giving = params[:purpose]
 	@t.img = params[:imgurl]
 	@t.save
 

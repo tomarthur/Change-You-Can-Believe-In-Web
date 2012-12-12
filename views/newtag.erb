@@ -1,53 +1,64 @@
 
     <div class="container">
+    
 
       <p>You can add a new item to believe in.</p>
       
       <div class="container">
 
-      <form class="form-horizontal">
+      <form form action="../maketag" method="POST" class="form-horizontal">
         <h2 class="form-negtag-heading">New Tag</h2>
         <div class="control-group">
-       	 <label class="control-label" for="inputEmail">Item Name</label>
-       	 	<div class="controls">
-	       	 <input class="span5" type="text"  name="name" placeholder="Mouse Ears">
-	       	</div>
+	    <label class="control-label" for="item">Item Name</label>
+       	<div class="controls">
+	    <input class="span5" type="text" name="name" placeholder="Mouse Ears">
+	    </div>
         </div>
         
         <div class="control-group">
-        <label>Tag Number <input class="span3" type="text" name="tagid" placeholder="3012393"></label>
+        <label class="control-label" for="tagid">Tag Number</label>
+        <div class="controls">
+	    <input class="span3" type="text" name="tagid" placeholder="3012393">
+	    </div>
         </div>
         
-        <label>Price <div class="input-prepend">
-	    <span class="add-on">$</span>
-        <input class="span2" id="prependedInput" type="text" placeholder="20.00">
-        </div></label>
         
+        <div class="control-group">
+        <label class="control-label" for="price">Price</label>
+        <div class="controls">
+	    <div class="input-prepend">
+	    <span class="add-on">$</span>
+        <input class="span2" name="price" type="text" placeholder="20.00">
+        </div>
+        </div>
+        </div>
+        
+        <div class="control-group">
+        <div class="controls">
         <label class="radio">
-		  <input type="radio" name="purpose" id="purpose1" value="forme" checked>
+		<input type="radio" name="purpose" name="purpose" value="false" checked>
 		  Personal Item - Change for Me
 		</label>
 		<label class="radio">
-		  <input type="radio" name="purpose" id="purpose2" value="foreveryone">
+		  <input type="radio" name="purpose" name="purpose" value="true">
 		  Social Good Item - Change for Everyone
 		</label>
-		
-		<label>Image URL <input type="url" class"span7" name="img" placeholder="image url"></label>
+        </div>
+        </div>
+        
+         <div class="control-group">
+        <label class="control-label" for="imgurl">Image URL</label>
+        <div class="controls">
+		<input type="url" class"span7" name="imgurl" placeholder="image url">
+        </div>
+        </div>
+        <div class"control-group">
+        <div class="controls">
 	  <button class="btn btn-large btn-primary" type="submit">Add Tag</button>
+        </div>
+        </div>
       </form>
-
 
     </div> 
     
-      property :id, Serial	
-  property :created_at, DateTime
-  property :created_on, Date
-  property :updated_at, DateTime
-  property :updated_on, Date
-  property :numscans, Integer
-  property :tagid, Integer		# tag ID used by Arduino
-  property :name, String	    # human readable name of item
-  property :price, Float		# price of item
-  property :giving, Boolean		# TRUE == item for charity, FALSE == item for self
-  property :img, String			# Image address
- 
+  

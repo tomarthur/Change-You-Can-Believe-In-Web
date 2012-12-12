@@ -1,7 +1,58 @@
+<div class="container">
+  <h1>Coin Count History</h1>
+  <p>Track every instance of counting coins here.</p>
+  
+  <p>The last collection total was <%= @lasttotal.lasttotal %> on <%= @lasttotal.created_on %> at <%= @lasttotal.created_at %></p>
+  <p>Number of pennies collected <%= @lasttotal.penny %> </p>
+  <% if (@lastpennymoney > 0)%>
+  <p>That's <%= currency(@lastpennymoney) %> </p>
+  <% end %>
+  <p>Number of nickels collected <%= @lasttotal.nickel %> </p>
+  <% if (@lastnickelmoney > 0)%>
+  <p>That's <%= currency(@lastnickelmoney) %> </p>
+  <% end %>
+  <p>Number of dimes collected <%= @lasttotal.dime %> </p>
+  <% if (@lastdimemoney > 0)%>
+  <p>That's <%= currency(@lastdimemoney) %> </p>
+  <% end %>
+  <p>Number of quarters collected <%= @lasttotal.quarter %> </p>
+  <% if (@lastquartermoney > 0)%>
+  <p>That's <%=currency(@lastquartermoney) %> </p>
+  <% end %>
 
-    <div class="container">
+  
 
-      <h1>Bootstrap starter template</h1>
-      <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+    
 
-    </div> <!-- /container -->
+
+<table class="table table-hover">
+  <caption>All coin sorting events uploaded from Change You Can Believe In</caption>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Pennies</th>
+      <th>Nickels</th>
+      <th>Dimes</th>
+      <th>Quarters</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% for thissort in @savings %>
+    <tr>
+
+      <td><%= thissort.created_on %></td>
+      <td> tbd </td>
+      <td><%= thissort.penny %></td>
+      <td><%= thissort.nickel %></td>
+      <td><%= thissort.dime %></td>
+      <td><%= thissort.quarter %></td>
+      <td><%= currency(thissort.total) %></td>
+     
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+    
+</div>

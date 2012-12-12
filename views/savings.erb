@@ -1,55 +1,21 @@
-
-    <div class="container">
-
-      <h1>What You've Saved</h1>
-      <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
-      
-      <p>Total saved: <%= currency(@lasttotal.total) %></p>
-      
-      <p>Total number of pennies collected <%= @totalpenny %> </p>
-      <% if (@pennymoney > 0)%>
-      <p>That's <%= currency(@pennymoney) %> </p>
-      <% end %>
-      
-      <p>Total number of nickels collected <%= @totalnickel %> </p>
-      <% if (@nickelmoney > 0)%>
-      <p>That's <%= currency(@nickelmoney) %> </p>
-      <% end %>
-      
-      <p>Total number of dimes collected <%= @totaldime %> </p>
-      <% if (@dimemoney > 0)%>
-      <p>That's <%= currency(@dimemoney) %> </p>
-      <% end %>
-      
-      <p>Total number of quarters collected <%= @totalquarter %> </p>
-      <% if (@quartermoney > 0)%>
-      <p>That's <%= currency(@quartermoney) %> </p>
-      <% end %>
-
-      
-      <p>The last collection total was <%= @lasttotal.lasttotal %> on <%= @lasttotal.created_on %> at <%= @lasttotal.created_at %></p>
-      
-      <p>Number of pennies collected <%= @lasttotal.penny %> </p>
-      <% if (@lastpennymoney > 0)%>
-      <p>That's <%= currency(@lastpennymoney) %> </p>
-      <% end %>
-      
-      <p>Number of nickels collected <%= @lasttotal.nickel %> </p>
-      <% if (@lastnickelmoney > 0)%>
-      <p>That's <%= currency(@lastnickelmoney) %> </p>
-      <% end %>
-      
-      <p>Number of dimes collected <%= @lasttotal.dime %> </p>
-      <% if (@lastdimemoney > 0)%>
-      <p>That's <%= currency(@lastdimemoney) %> </p>
-      <% end %>
-      
-      <p>Number of quarters collected <%= @lasttotal.quarter %> </p>
-       <% if (@lastquartermoney > 0)%>
-      <p>That's <%=currency(@lastquartermoney) %> </p>
-      <% end %>
-      Example: <%= currency(100)  %>
-      
-
-
-    </div> <!-- /container -->
+<div class="container">
+  <h1>Coins Collected</h1>
+  <p>Total saved: <%= currency(@lasttotal.total) %></p>
+  <p>Total number of pennies collected <%= @totalpenny %> </p>
+  <% if (@pennymoney > 0)%>
+  <p>That's <%= currency(@pennymoney) %> </p>
+  <% end %>
+  <p>Total number of nickels collected <%= @totalnickel %> </p>
+  <% if (@nickelmoney > 0)%>
+  <p>That's <%= currency(@nickelmoney) %> </p>
+  <% end %>
+  <p>Total number of dimes collected <%= @totaldime %> </p>
+  <% if (@dimemoney > 0)%>
+  <p>That's <%= currency(@dimemoney) %> </p>
+  <% end %>
+  <p>Total number of quarters collected <%= @totalquarter %> </p>
+  <% if (@quartermoney > 0)%>
+  <p>That's <%= currency(@quartermoney) %> </p>
+  <% end %>
+</div>
+<!-- /container -->
