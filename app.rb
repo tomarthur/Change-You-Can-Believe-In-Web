@@ -3,7 +3,7 @@ require 'data_mapper'
 require 'dm-timestamps'
 require 'sinatra/support/numeric'
 
-DataMapper::setup(:default, {:adapter => 'yaml', :path => 'http://itp.nyu.edu/~tca241/db/'})
+DataMapper::setup(:default, {:adapter => 'yaml', :path => 'http://itp.howtomworks.com/db-heroku/'})
 #talk to database yaml (type, could be mysql, to the db folder
 
 class Money
