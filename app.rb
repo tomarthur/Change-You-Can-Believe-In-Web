@@ -3,8 +3,7 @@ require 'dm-core'
 require 'dm-timestamps'
 require 'sinatra/support/numeric'
 
-
-DataMapper::setup(:default, {:adapter => 'yaml', :path => 'db'}) 
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 #talk to database yaml (type, could be mysql, to the db folder
 
 class Money
@@ -85,6 +84,7 @@ get '/savings' do
   @quartermoney = @totalquarter * 0.25
   
   @lasttotal = Money.last
+
 
   @lastpennymoney = @lasttotal.penny * 0.01
   @lastnickelmoney = @lasttotal.nickel * 0.05
