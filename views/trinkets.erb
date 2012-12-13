@@ -6,7 +6,7 @@
   <% for thistag in @pertags %>
   <% @numavail = @total / thistag.price%>
   <% @toward =  thistag.price - @total%>
-  <% @toward = (thistag.price / @total) * 100  %>
+  <% @toward = (@total / thistag.price) * 100  %>
   <% if (@toward >= 100) %>
   <% @toward = 100 %>
   <% else %>
