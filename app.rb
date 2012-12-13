@@ -53,7 +53,7 @@ get '/trinkets' do
 
 	@tags = Tag.all
 	@total = Money.last.total
-	@total * 100
+	@total / 100
 	@scans = TagScan.all
 
   erb :trinkets
@@ -70,7 +70,7 @@ get '/lastcollection' do
   
   @lastt = @lastpennymoney +  @lastnickelmoney +   @lastdimemoney +   @lastquartermoney
   @totalcorrected = Money.last.total
-  @totalcorrected*100
+  @totalcorrected/100
 
 
   @savings = Money.all
