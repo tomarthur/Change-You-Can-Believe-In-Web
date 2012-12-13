@@ -53,7 +53,7 @@ get '/trinkets' do
 
 	@tags = Tag.all
 	@total = Money.last.total
-	
+	@scans = TagScan.all
 
   erb :trinkets
 end
@@ -135,5 +135,4 @@ get '/tagscan' do			# tag scan data sent from arduino
 
   "Tag Captured"
 end
-
 end

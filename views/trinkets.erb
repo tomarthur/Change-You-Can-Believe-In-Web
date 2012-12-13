@@ -46,5 +46,9 @@
       </div>
   </li>
   <% end %>
+  
 </ul>
 </div>
+  <% for thistag in @scans %>
+  <p><%= thistag.tagid %></p>
+  <% end %>
