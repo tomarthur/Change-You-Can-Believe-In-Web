@@ -30,7 +30,7 @@
         <div class="well">
           <center>
             <%=currency(thistag.price)%> each | 
-            <% if (@numavail > 1) %>
+            <% if (@numavail >= 1) %>
             <span class="label label-success">You can 
             <% if (thistag.giving == false) %>
             buy <%= @numavail.to_i %> 
@@ -74,7 +74,7 @@
         <div class="well">
           <center>
             <%=currency(thistag.price)%> each | 
-            <% if (@numavail > 1) %>
+            <% if (@numavail >= 1) %>
             <span class="label label-success">You can 
             <% if (thistag.giving == false) %>
             buy <%= @numavail.to_i %> 
