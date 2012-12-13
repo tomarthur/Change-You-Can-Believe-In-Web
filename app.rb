@@ -56,6 +56,10 @@ get '/trinkets' do
 	@total / 100
 	@scans = TagScan.all
 
+	@pertags = Tag.all(:giving => false)
+	@givetags = Tag.all(:giving => true)
+
+
   erb :trinkets
 end
 

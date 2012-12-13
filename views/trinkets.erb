@@ -3,7 +3,51 @@
   <h1>What You're Saving For <small>trinkets represent causes & products</small></h1>
 </div>
 <ul class="thumbnails">
-  <% for thistag in @tags %>
+  <% for thistag in @pertags %>
+  <% @numavail = @total / thistag.price%>
+  <% @toward =  thistag.price - @total%>
+  <% if (@toward < 0) %>
+  <% @toward = 100 %>
+  <% elsif (@toward < 1) %>
+  <% @toward = 0%>
+  <% else %>
+  <% @toward %>
+  <% end %>
+  
+  <li class="span3">
+    <div class="thumbnail">
+      <img src="<%= thistag.img %>" data-src="holder.js/160x120" alt="<%= thistag.name%>" class="img-polaroid" />
+      <h3>
+        <center><%= thistag.name %></center>
+      </h3>
+      <% if (thistag.giving == false) %>
+      <div class="progress progress-success progress-striped">
+        <% else %>
+        <div class="progress progress-warning progress-striped">
+          <%end%>
+          <div class="bar" style="width: <%=@toward%>%"></div>
+        </div>
+        <div class="well">
+          <center>
+            <%=currency(thistag.price)%> each | 
+            <% if (@numavail > 1) %>
+            <span class="label label-success">You can 
+            <% if (thistag.giving == false) %>
+            buy <%= @numavail.to_i %> 
+            <% else %>
+            help <%=@numavail.to_i %>
+            <%end%>
+            </span>
+            <% else %>
+            <span class="label label-important">Save <%=currency(thistag.price - @total) %> more</span>
+            <% end %>
+          </center>
+        </div>
+      </div>
+  </li>
+  <% end %>
+  
+  <% for thistag in @givetags %>
   <% @numavail = @total / thistag.price%>
   <% @toward =  thistag.price - @total%>
   <% if (@toward < 0) %>
