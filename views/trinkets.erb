@@ -92,16 +92,7 @@
 </ul>
 <h4>Recently Scanned Tags</h4><small>This section is a work in progress</small>
 
-<% for thistag in @lastscan%>
-	<% tagidsearch = thistag.tagid%>
-	<% tagidsearch.to_s %>
-	<% display = Tag.first(:tagid => tagidsearch)%>
-	<% #if display.giving == true%>
-	<p><span class="label label-warning"><%= display.name %></span> scanned at <span class="badge"><%= display.created_on%></span> </p>
-	<% #else %>
-	<p><span class="label label-success"><%= display.name %></span> scanned at <span class="badge"><%= display.created_on%></span> </p>
-	<% #end %>
-	<%end%>
+
 
 
 
