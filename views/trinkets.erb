@@ -4,12 +4,12 @@
 </div>
 <ul class="thumbnails">
   <% for thistag in @tags %>
-  <% @numavail = @total / thistag.price%>
+  <% @numavail = thistag.price / @total%>
   <% @toward =  thistag.price - @total%>
   <% if (@toward < 0) %>
   <% @toward = 100 %>
   <% elsif (@toward < 1) %>
-  <% @toward*100%>
+  <% @toward = 0%>
   <% else %>
   <% @toward %>
   <% end %>
