@@ -1,26 +1,40 @@
 <div class="container">
-  <h1>Coin Count History</h1>
-  <p>Track every instance of counting coins here.</p>
   
-  <p>The last collection total was <%= @lasttotal.lasttotal %> on <%= @lasttotal.created_on %> at <%= @lasttotal.created_at %></p>
-  <p>Number of pennies collected <%= @lasttotal.penny %> </p>
-  <% if (@lastpennymoney > 0)%>
-  <p>That's <%= currency(@lastpennymoney) %> </p>
-  <% end %>
-  <p>Number of nickels collected <%= @lasttotal.nickel %> </p>
-  <% if (@lastnickelmoney > 0)%>
-  <p>That's <%= currency(@lastnickelmoney) %> </p>
-  <% end %>
-  <p>Number of dimes collected <%= @lasttotal.dime %> </p>
-  <% if (@lastdimemoney > 0)%>
-  <p>That's <%= currency(@lastdimemoney) %> </p>
-  <% end %>
-  <p>Number of quarters collected <%= @lasttotal.quarter %> </p>
-  <% if (@lastquartermoney > 0)%>
-  <p>That's <%=currency(@lastquartermoney) %> </p>
-  <% end %>
+<h2>Coin Count History <small>Every collection!</a></small></h2>
 
+  <h3>The last collection total was <%= currency(@lasttotal.total/100) %></h3>
+  <h6>on <%= @lasttotal.created_on %> at <%= @lasttotal.created_at %></h6>
   
+  <ul class="thumbnails">
+  <li class="span3">
+    <div class="thumbnail">
+      <center><h2><%= @lasttotal.penny%></h2></center>
+      <center><h3>Pennies</h3></center>
+      <center><p>That's  <%= currency(@lastpennymoney) %></p></center>
+    </div>
+  </li>
+  <li class="span3">
+    <div class="thumbnail">
+      <center><h2><%= @lasttotal.nickel%></h2></center>
+      <center><h3>Nickels</h3></center>
+      <center><p>That's  <%= currency(@lastnickelmoney) %></p></center>
+    </div>
+  </li>
+  <li class="span3">
+    <div class="thumbnail">
+      <center><h2><%= @lasttotal.dime%></h2></center>
+      <center><h3>Dimes</h3></center>
+      <center><p>That's  <%= currency(@lastdimemoney) %></p></center>
+    </div>
+  </li>
+  <li class="span3">
+    <div class="thumbnail">
+      <center><h2><%= @lasttotal.quarter%></h2></center>
+      <center><h3>Quarters</h3></center>
+      <center><p>That's  <%= currency(@lastquartermoney) %></p></center>
+    </div>
+  </li>
+</ul>
 
     
 
@@ -48,11 +62,12 @@
       <td><%= thissort.nickel %></td>
       <td><%= thissort.dime %></td>
       <td><%= thissort.quarter %></td>
-      <td><%= currency(thissort.total) %></td>
+      <td><%= currency(thissort.total.to_f/100) %></td>
      
     </tr>
     <%end%>
   </tbody>
 </table>
+</div>
     
 </div>

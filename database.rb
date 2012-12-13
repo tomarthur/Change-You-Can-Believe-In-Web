@@ -1,4 +1,4 @@
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/itpchange")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/changeapp")
 
 class Money
     include DataMapper::Resource
