@@ -51,14 +51,15 @@ end
 
 get '/trinkets' do
 
-# 	@tags = Tag.all
+
 	@total = Money.last.total.to_f/100
 	@total / 100
-	@scans = TagScan.all
 
 	@pertags = Tag.all(:giving => false)
 	@givetags = Tag.all(:giving => true)
-
+	
+	@tags = Tag.all
+	@scans = TagScan.all
 
   erb :trinkets
 end

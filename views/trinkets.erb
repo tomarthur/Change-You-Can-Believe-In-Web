@@ -91,8 +91,9 @@
   
 </ul>
 <h4>Recently Scanned Tags</h4><small>This section is a work in progress</small>
- <% for thistag in @scans %>
-  <p><%= thistag.tagid %></p>
+ <% for thisscan in @scans %>
+  <p><% @thisitem = @tags.all(:tagid => thisscan) %></p>
+  <p><%= @thisitem.name %>
   <% end %>
 
 </div>
