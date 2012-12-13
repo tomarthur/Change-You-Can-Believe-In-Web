@@ -59,9 +59,9 @@ get '/trinkets' do
 	@givetags = Tag.all(:giving => true)
 	
 
-	TagScan.destroy
-	"destroy tags"
-#   erb :trinkets
+	@lastscan = TagScan.all
+
+  erb :trinkets
 end
 
 get '/lastcollection' do
