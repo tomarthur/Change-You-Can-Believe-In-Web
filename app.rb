@@ -58,8 +58,8 @@ get '/trinkets' do
 	@pertags = Tag.all(:giving => false)
 	@givetags = Tag.all(:giving => true)
 	
-	@tags = Tag.all
-	@scans = TagScan.all
+
+	@lastscan = TagScan.all
 
   erb :trinkets
 end
