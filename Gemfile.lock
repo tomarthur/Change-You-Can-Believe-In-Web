@@ -39,6 +39,7 @@ DEPENDENCIES
   dm-migrations
   dm-postgres-adapter
   dm-timestamps
+  do_postgres
   shotgun
   sinatra
   sinatra-support
