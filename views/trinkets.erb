@@ -97,9 +97,9 @@
 	<% tagidsearch.to_s %>
 	<% display = Tag.first(:tagid => tagidsearch)%>
 	<% if display.giving == true%>
-	<p><span class="label label-warning"><%= display.name %></span> scanned at <span class="badge"><%= display.created_on%></span> </p>
+	<p><span class="label label-warning"><%= display.name %></span> scanned at <span class="badge"><%= display.created_at%></span> </p>
 	<% else %>
-	<p><span class="label label-success"><%= display.name %></span> scanned at <span class="badge"><%= display.created_on%></span> </p>
+	<p><span class="label label-success"><%= display.name %></span> scanned at <span class="badge"><%= display.created_at%></span> </p>
 	<% end %>
 	<%end%>
 
