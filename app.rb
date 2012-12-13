@@ -59,7 +59,7 @@ get '/trinkets' do
 	@givetags = Tag.all(:giving => true)
 	
 
-	@lastscan = TagScan.all
+	@lastscan = TagScan.destroy
 
   erb :trinkets
 end
