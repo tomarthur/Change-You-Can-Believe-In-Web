@@ -62,11 +62,13 @@ get '/lastcollection' do
 
   @lasttotal = Money.last
 
-
   @lastpennymoney = @lasttotal.penny * 0.01
   @lastnickelmoney = @lasttotal.nickel * 0.05
   @lastdimemoney = @lasttotal.dime * 0.10
   @lastquartermoney = @lasttotal.quarter * 0.25
+  
+  @lastt = @lastpennymoney +  @lastnickelmoney +   @lastdimemoney +   @lastquartermoney
+
 
   @savings = Money.all
 
