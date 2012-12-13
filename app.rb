@@ -53,6 +53,7 @@ get '/trinkets' do
 
 	@tags = Tag.all
 	@total = Money.last.total
+	@total * 100
 	@scans = TagScan.all
 
   erb :trinkets
@@ -79,6 +80,45 @@ get '/newtag' do
 
   erb :newtag
 end
+
+get '/tagdelete' do
+
+  @tags = Tag.all
+
+  erb :deletetag
+end
+
+post '/deletegonetag' do
+
+	tag = Tag.all(:name => params[:tagdel])
+	tag.destroy
+  "Tag was deleted"
+end
+ 
+get '/saveingdelete' do
+
+  @money = Money.all
+
+  erb :deletemoney
+end
+
+post '/deletegonesave' do
+
+	money = Money.all(:created_at => params[:date])
+	money.destroy
+  "Savings entry was deleted"
+end
+ 
+  
+post '/reset116232' do
+
+# Money.destroy
+# TagScan.destroy
+# Tag.destroy
+
+"if active, will delete all records"
+end
+
 
 post '/maketag' do #for adding new RFID tags to the database
 
