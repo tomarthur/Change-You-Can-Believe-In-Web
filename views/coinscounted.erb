@@ -2,7 +2,7 @@
   
 <h2>Coin Count History <small>Every collection!</a></small></h2>
 
-  <h3>The last collection total was <%= currency(@lasttotal.total/100) %></h3>
+  <h3>The last collection total was <%= currency(@pennymoney + @nickelmoney + @dimemoney + @totalquarter) %></h3>
   <h6>on <%= @lasttotal.created_on %> at <%= @lasttotal.created_at %></h6>
   
   <ul class="thumbnails">
@@ -40,7 +40,7 @@
 
 
 <table class="table table-hover">
-  <caption>All coin sorting events uploaded from Change You Can Believe In</caption>
+  <caption>All Coin Sorting Events</caption>
   <thead>
     <tr>
       <th>Date</th>
